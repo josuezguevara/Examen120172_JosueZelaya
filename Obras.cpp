@@ -14,4 +14,10 @@ Obras::Obras(string id, string nombre, string autor, string fecha){
  this->fecha=fecha;
 }
 
+string Obras::getName(){
+ return nombre;
+}
 
+void Obras::setName(string pnombre){
+ nombre=pnombre;
+}

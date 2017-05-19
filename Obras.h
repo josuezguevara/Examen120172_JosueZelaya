@@ -15,7 +15,8 @@ class Obras{
    Obras();
    Obras(string,string,string,string);
 
-
+   string getName();
+   void setName(string);
 };
 
 #endif

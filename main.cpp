@@ -18,7 +18,7 @@ int main(){
 
  while(!salir){
   switch ( menu() ){
-   case 1:{
+   case 1:{//agregar
     string id,nombre,autor,fecha;
     int op;
     cout<<"Ingrese Nombre: "<<endl;
@@ -28,7 +28,7 @@ int main(){
     getline(cin,autor);
     cout<<"Ingrese fecha: "<<endl;
     getline(cin,fecha);
-    cout<<"Ingrese el numero de museo "<<endl
+    cout<<"----Ingrese el numero de museo que quiere agregar--- "<<endl
     <<"1. Literatura"<<endl
     <<"2. Escultura"<<endl
     <<"3. Pinturas"<<endl
@@ -36,7 +36,7 @@ int main(){
     cout<<"Ingrese opcion: "<<endl;
     cin>>op;
     switch (op){
-     case 1:{
+     case 1:{//literatura
       string genero,epoca;
       cout<<"Ingrese un genero literario: "<<endl;
       cin>>genero;
@@ -46,7 +46,7 @@ int main(){
       obras.push_back(literatura);   
       break;
      }
-     case 2:{
+     case 2:{//escultura
        string peso, material;
        cout<<"Ingrese peso: "<<endl;
        cin>>peso;
@@ -56,24 +56,59 @@ int main(){
        obras.push_back(escultura);
        break;
      }
-
+     case 3:{//pinturas
+      string material,tecnica;
+      cout<<"Ingrese el material del lienzo: "<<endl;
+      cin>>material;
+      cout<<"Ingrese la tecnica que se utilizo: "<<endl;
+      cin>>tecnica;
+      Pinturas pintura(material,tecnica, id,nombre,autor,fecha);
+      obras.push_back(pintura);
+      break;
+     }
+     case 4:{//diseños arquitectonicos
+      string terreno;
+      cout<<"Ingrese el tipo de terreno en donde esta diseñada: "<<endl;
+      cin>>terreno;
+      Disenos diseno(terreno, id, nombre,autor,fecha);
+      obras.push_back(diseno);
+      break;
+     }
     }//fin switch
     break;
    }
-   case 2:{
-
-
+   case 2:{//eliminar
+    cout<<"Ingrese posicion de obra que quiere eliminar: "<<endl;
+    for (int i=0;i<obras.size();i++){
+     cout<<i<<" -> "<<obras[i].getName()<<endl;
+    }
+    int b;
+    cin>>b;
+    obras.erase(obras.begin()+b);
+    cout<<"Obra seleccionada  ya ha sido eliminada"<<endl;
     break;
    }
-   case 3:{
+   case 3:{//transferir
+    cout<<"Ingresar posicion de obra que quiere transferir: "<<endl;
+    for (int i=0;i<obras.size();i++){
+     cout<<i<<" -> "<<obras[i].getName()<<endl;
+    }
+    int trans;
+    cin>>trans;
+    transferidos.push_back(obras[trans]);
+    obras.erase(obras.begin()+trans);
+    cout<<"La Obra seleccionada ya ha sido transferida"<<endl;
+    break;
+   }
+   case 4:{//reportes
    
     break;
    }
-   case 4:{
-   
+   case 5:{//busqueda
+    
     break;
    }
-   case 5:{
+   case 6:{///salir
     cout<<"Ha salido del programa! :)"<<endl;
     salir=true;
     break;
@@ -96,7 +131,8 @@ int menu(){
     <<"2.- Eliminar"<<endl
     <<"3.- Transferir a otro museo"<<endl
     <<"4.- Reportes"<<endl
-    <<"5.- Salir"<<endl;
+    <<"5.- Busqueda"<<endl
+    <<"6.- Salir"<<endl;
     cout<<"Ingrese una opcion: ";
     cin>>opcion;
     if (opcion >0 && opcion <7)
