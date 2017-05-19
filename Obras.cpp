@@ -18,6 +18,18 @@ string Obras::getName(){
  return nombre;
 }
 
+string Obras::getId(){
+ return id;
+}
+
+string Obras::getAutor(){
+ return autor;
+}
+
+string Obras::getFecha(){
+ return fecha;
+}
+
 void Obras::setName(string pnombre){
  nombre=pnombre;
 }

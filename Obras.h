@@ -16,6 +16,9 @@ class Obras{
    Obras(string,string,string,string);
 
    string getName();
+   string getId();
+   string getAutor();
+   string getFecha();
    void setName(string);
 };
 

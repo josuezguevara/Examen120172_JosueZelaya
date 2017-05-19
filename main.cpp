@@ -101,11 +101,27 @@ int main(){
     break;
    }
    case 4:{//reportes
-   
+    cout<<"---Obras de artes existentes en el Museo---: "<<endl;
+    for(int i=0;i<obras.size();i++){
+     cout<<i<<" -> "<<obras[i].getName()<<" Id:  "<<obras[i].getId()<<" Autor: "<<obras[i].getAutor()<<" Fecha: "<<obras[i].getFecha()<<endl;
+    }
+    cout<<"---Obras de artes transferidas---: "<<endl;
+    for (int j=0;j<transferidos.size();j++){
+     cout<<j<<" -> "<<transferidos[j].getName()<<" Id: "<<transferidos[j].getId()<<" Autor: "<<transferidos[j].getAutor()<< " Fecha: "<<transferidos[j].getFecha()<<endl;
+    }
+         
     break;
    }
    case 5:{//busqueda
-    
+    string busqueda;
+    cout<<"Ingrese el nombre del Autor: "<<endl;
+    cin>>busqueda;
+    for(int i=0;i<obras.size();i++){
+     if (busqueda==obras[i].getAutor()){
+      cout<<"Obras del Autor: "<<endl;
+      cout<<i<<" -> " <<obras[i].getName();
+     }
+    }
     break;
    }
    case 6:{///salir
