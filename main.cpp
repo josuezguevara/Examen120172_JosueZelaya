@@ -4,12 +4,14 @@
 #include "Pintura.h"
 #include "Disenos.h"
 
+#include <stdlib.h>
 #include <vector>
 #include <iostream>
 
 using namespace std;
 //prototipos de funciones 
 int menu();
+string Setid();
 
 int main(){
  vector<Obras> obras;
@@ -28,6 +30,13 @@ int main(){
     getline(cin,autor);
     cout<<"Ingrese fecha: "<<endl;
     getline(cin,fecha);
+    id=Setid();
+    for(int x=0;x<obras.size();x++){
+     if (id==obras[x].getId()){
+       id=Setid();
+     }
+    }
+    
     cout<<"----Ingrese el numero de museo que quiere agregar--- "<<endl
     <<"1. Literatura"<<endl
     <<"2. Escultura"<<endl
@@ -116,10 +125,10 @@ int main(){
     string busqueda;
     cout<<"Ingrese el nombre del Autor: "<<endl;
     cin>>busqueda;
+    cout<<"Obras del Autor: "<<endl;
     for(int i=0;i<obras.size();i++){
      if (busqueda==obras[i].getAutor()){
-      cout<<"Obras del Autor: "<<endl;
-      cout<<i<<" -> " <<obras[i].getName();
+      cout<<i<<" -> " <<obras[i].getName()<<endl;
      }
     }
     break;
@@ -159,4 +168,33 @@ int menu(){
   }while(!valido);
  
  return opcion;
- }//fin de menu
+}//fin de menu
+
+string Setid(){//funcion para crear id
+  string numero="";
+  vector<string> digitos;
+  digitos.push_back("0");
+  digitos.push_back("1");
+  digitos.push_back("2");
+  digitos.push_back("3");
+  digitos.push_back("4");
+  digitos.push_back("5");
+  digitos.push_back("6");
+  digitos.push_back("7");
+  digitos.push_back("8");
+  digitos.push_back("9");
+  digitos.push_back("A");
+  digitos.push_back("B");
+  digitos.push_back("C");
+  digitos.push_back("D");
+  digitos.push_back("E");
+  digitos.push_back("F");
+
+  int num;
+  for (int i=0;i <6;i++){
+   num=rand()%15;
+   numero+=digitos[num];
+  }
+ return numero;
+
+}//fin de id
